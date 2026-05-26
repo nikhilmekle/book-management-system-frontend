@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'DM Sans', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-cream: var(--cream);
+  --color-amber: var(--amber);
+  --color-amber-dark: var(--amber-dark);
+  --color-rust: var(--rust);
+  --color-sage: var(--sage);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-card: var(--card);
+
+  --color-background: var(--paper);
+  --color-foreground: var(--text);
+  --color-primary: var(--amber);
+  --color-primary-foreground: #ffffff;
+  --color-destructive: var(--rust);
+  --color-destructive-foreground: #ffffff;
+  --color-muted-foreground: var(--muted);
+  --color-accent: var(--cream);
+  --color-accent-foreground: var(--text);
+  --color-input: var(--border);
+  --color-ring: var(--amber);
+  --color-popover: var(--card);
+  --color-popover-foreground: var(--text);
+  --color-card-foreground: var(--text);
+  --color-secondary: var(--cream);
+  --color-secondary-foreground: var(--text);
+}
+
+:root {
+  --ink: #1a1a2e;
+  --paper: #f8f4ef;
+  --cream: #fdf8f3;
+  --amber: #d4a853;
+  --amber-dark: #b8922e;
+  --rust: #c0492b;
+  --sage: #4a7c59;
+  --text: #2d2d3a;
+  --muted: #7a7a8a;
+  --border: #e8e0d5;
+  --card: #ffffff;
+  --shadow: rgba(26, 26, 46, 0.08);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --ink: #f0ebe3;
+  --paper: #13131f;
+  --cream: #1a1a2e;
+  --amber: #d4a853;
+  --amber-dark: #e8bc6a;
+  --rust: #e06548;
+  --sage: #6aab7e;
+  --text: #e8e3db;
+  --muted: #9a9aaa;
+  --border: #2d2d45;
+  --card: #1e1e32;
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body { min-height: 100vh; }
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-paper);
+    color: var(--color-text);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-serif); }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(135deg, var(--amber) 0%, var(--rust) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .page-bg {
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(circle at 20% 0%, rgba(212, 168, 83, 0.07) 0%, transparent 50%),
+      radial-gradient(circle at 80% 100%, rgba(192, 73, 43, 0.05) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+  .skeleton {
+    background: linear-gradient(90deg, var(--border) 25%, rgba(212,168,83,0.15) 50%, var(--border) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+    border-radius: 6px;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--amber); }
+
+.Toastify__toast { font-family: var(--font-sans) !important; border-radius: 10px !important; }
